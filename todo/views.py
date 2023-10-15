@@ -5,6 +5,7 @@ from .models import TodoItem
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 
 
@@ -58,5 +59,6 @@ def complete_todo(request, pk):
     todo.is_completed = True
     todo.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
 # Create your views here.
