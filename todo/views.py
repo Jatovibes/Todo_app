@@ -30,8 +30,10 @@ def home(request):
     if request.method == 'POST':
         todo_name = request.POST.get("new-todo")
         todo = TodoItem.objects.create(name=todo_name, user=request.user)
+        todo.save()
         return redirect("home")
-    todos = TodoItem.objects.filter(user=request.user, is_completed=False).order_by("-id")
+    todos = TodoItem.objects.filter(user=request.user, is_completed=False).order_by("-id", "date")
+    todos = TodoItem.objects.filter(is_completed=False).order_by("-id", "date")
 
     paginator = Paginator(todos, 4)
     page_number = request.GET.get("page")

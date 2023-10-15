@@ -15,7 +15,8 @@
     {% for i in page_obj %}
     <div class="todo-container">
         <div class="todos">
-            <p>{{ i.name }}</p>
+            <p>{{ i.name }} by {{i.user}} </p>
+            {% if i.user == request.user %}
             <ul class="crud-buttons">
                 <li>
                     <button id="edit-todo" data-toggle="modal" data-target="#editTodoModal_{{ i.id }}">Edit</button>
@@ -50,6 +51,7 @@
                 <li><a href="{% url 'complete_todo' i.id %}" id="complete-todo">Completed</a></li>
                 <li><a href="{% url 'delete_todo' i.id %}" id="delete-todo">Delete</a></li>
             </ul>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

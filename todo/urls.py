@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from .views import register
-from .views import (home, register, update_todo, complete_todo, delete_todo, display_users)
+from .views import (home, register, update_todo, complete_todo, delete_todo)
 
 
 
